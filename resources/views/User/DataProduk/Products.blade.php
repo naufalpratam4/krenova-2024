@@ -1,6 +1,6 @@
 @extends('layouts.MasterUser')
 @section('content')
-    <div>
+    <div class="mb-4">
         <div class="text-4xl font-bold pt-8  pb-5">Data Ikan</div>
 
         <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
@@ -108,6 +108,6 @@
                 </tbody>
             </table>
         </div>
-
     </div>
+    @include('layouts.PaginateUser')
 @endsection

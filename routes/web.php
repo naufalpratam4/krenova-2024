@@ -11,6 +11,6 @@ Route::get('/', function () {
 
 
 Route::get('/admin-dashboard', function () {
-    return view('User.dashboardUser');
+    return view('User.DataProduk.dashboardUser');
 });
 Route::get('/admin-product', [AdminDataProdukController::class, 'index'])->name('admin.produk');
