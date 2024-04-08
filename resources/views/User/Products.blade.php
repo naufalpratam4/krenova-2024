@@ -10,7 +10,6 @@
                         class="inline-flex items-center text-gray-500 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100   focus:ring-gray-100 font-medium rounded-lg text-sm px-3 py-1.5 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
                         type="button">
                         Tambah Produk
-
                     </button>
                 </div>
                 <label for="table-search" class="sr-only">Search</label>
@@ -57,50 +56,55 @@
                             Deskripsi
                         </th>
                         <th scope="col" class="px-6 py-3">
+                            Gambar
+                        </th>
+                        <th scope="col" class="px-6 py-3">
                             Aksi
                         </th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr
-                        class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                        <td class="w-4 p-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                            1
-                        </td>
-                        <th scope="row" class="px-1 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                            Ikan Bandeng Presto
-                        </th>
-                        <td class="px-6 py-4">
-                            IKNB01
-                        </td>
-                        <td class="px-1 py-4">
-                            Rp. 25000
-                        </td>
-                        <td class="px-3 py-4">
-                            100
-                        </td>
-                        <td class="px-3 py-4">
-                            Semarang
-                        </td>
-                        <td class="px-3 py-4">
-                            Ikan
-                        </td>
-                        <td class="px-3 py-4 " style="max-width: 200px">
-                            <div class="truncate ...">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Illo quasi
-                                cupiditate voluptas,
-                                suscipit neque quidem repellendus maiores eveniet reiciendis dolores, aliquam assumenda
-                                aliquid
-                                dolorem perspiciatis debitis, exercitationem quae architecto odit.</div>
-                        </td>
-                        <td class="px-6 py-4 flex">
-                            <a href="#"
-                                class="focus:outline-none text-white bg-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-3 py-1 md:px-5 md:py-2.5 me-2 mb-2 dark:focus:ring-yellow-900"
-                                type="button">Edit</a>
-                            <a href="#"
-                                class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-3 py-1 md:px-5 md:py-2.5 me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900"
-                                type="button">Delete</a>
-                        </td>
-                    </tr>
+                    @foreach ($produk as $no => $item)
+                        <tr
+                            class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                            <td class="w-4 p-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                {{ $no + 1 }}
+                            </td>
+                            <th scope="row"
+                                class="px-1 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                {{ $item->nama_produk }}
+                            </th>
+                            <td class="px-6 py-4">
+                                {{ $item->kd_produk }}
+                            </td>
+                            <td class="px-1 py-4">
+                                Rp. {{ $item->harga }}
+                            </td>
+                            <td class="px-3 py-4">
+                                {{ $item->stok }}
+                            </td>
+                            <td class="px-3 py-4">
+                                {{ $item->lokasi }}
+                            </td>
+                            <td class="px-3 py-4">
+                                {{ $item->namaKategori->nama_kategori }}
+                            </td>
+                            <td class="px-3 py-4 " style="max-width: 200px">
+                                <div class="truncate ...">{{ $item->deskripsi }}</div>
+                            </td>
+                            <td class="px-1 py-4 " style="max-width: 200px">
+                                <div><img src="{{ $item->gambar }}" alt=""></div>
+                            </td>
+                            <td class="px-6 py-4 flex">
+                                <a href="#"
+                                    class="focus:outline-none text-white bg-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-3 py-1 md:px-5 md:py-2.5 me-2 mb-2 dark:focus:ring-yellow-900"
+                                    type="button">Edit</a>
+                                <a href="#"
+                                    class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-3 py-1 md:px-5 md:py-2.5 me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900"
+                                    type="button">Delete</a>
+                            </td>
+                        </tr>
+                    @endforeach
                 </tbody>
             </table>
         </div>
