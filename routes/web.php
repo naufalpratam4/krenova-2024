@@ -9,8 +9,10 @@ Route::get('/', function () {
 
 
 
-
+// admin
 Route::get('/admin-dashboard', function () {
-    return view('User.DataProduk.dashboardUser');
+    return view('Admin.DataProduk.dashboardUser');
 });
 Route::get('/admin-product', [AdminDataProdukController::class, 'index'])->name('admin.produk');
+Route::get('/admin-addProduk', [AdminDataProdukController::class, 'showAddProduk'])->name('admin.showProduk');
+Route::post('/admin-addProduk', [AdminDataProdukController::class, 'addProduk'])->name('admin.addProduk');

@@ -11,3 +11,4 @@ Route::get('/user', function (Request $request) {
 
 // admin
 Route::get('/data-produk', [AdminDataProdukController::class, 'index']);
+Route::post('/add-produk', [AdminDataProdukController::class, 'addProduk']);

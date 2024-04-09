@@ -1,16 +1,17 @@
 @extends('layouts.MasterUser')
 @section('content')
     <div class="mb-4">
-        <div class="text-4xl font-bold pt-8  pb-5">Data Ikan</div>
+        <div class="text-4xl font-bold pt-8 pb-5">Data Ikan</div>
 
         <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
             <div class="flex flex-column sm:flex-row flex-wrap space-y-4 sm:space-y-0 items-center justify-between pb-4">
                 <div>
-                    <button
-                        class="inline-flex items-center text-gray-500 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100   focus:ring-gray-100 font-medium rounded-lg text-sm px-3 py-1.5 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
-                        type="button">
-                        Tambah Produk
-                    </button>
+                    <a href="{{ route('admin.addProduk') }}"><button
+                            class="inline-flex items-center text-gray-500 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100   focus:ring-gray-100 font-medium rounded-lg text-sm px-3 py-1.5 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
+                            type="button">
+                            Tambah Produk
+                        </button></a>
+
                 </div>
                 <label for="table-search" class="sr-only">Search</label>
                 <div class="relative">
