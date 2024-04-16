@@ -68,9 +68,9 @@
                     @foreach ($produk as $no => $item)
                         <tr
                             class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                            <td class="w-4 p-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                {{ $no + 1 }}
-                            </td>
+                            <th class="w-4 p-4 font-medium text-gray-900 whitespace-nowrap dark:text-white" scope="row">
+                                {{ $no++ }}
+                            </th>
                             <th scope="row"
                                 class="px-1 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                 {{ $item->nama_produk }}
@@ -94,15 +94,22 @@
                                 <div class="truncate ...">{{ $item->deskripsi }}</div>
                             </td>
                             <td class="px-1 py-4 " style="max-width: 200px">
-                                <div><img src="{{ $item->gambar }}" alt=""></div>
+                                <div><img src="{{ asset('gambar/' . $item->gambar) }}" alt="">
+                                </div>
                             </td>
                             <td class="px-6 py-4 flex">
-                                <a href="#"
+                                <a href="{{ route('admin.editProduk', $item->id) }}"
                                     class="focus:outline-none text-white bg-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-3 py-1 md:px-5 md:py-2.5 me-2 mb-2 dark:focus:ring-yellow-900"
                                     type="button">Edit</a>
-                                <a href="#"
-                                    class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-3 py-1 md:px-5 md:py-2.5 me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900"
-                                    type="button">Delete</a>
+                                <form action="{{ route('admin.destroyProduk', $item->id) }}" method="POST" type="button"
+                                    onsubmit="return confirm('Delete?')">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button
+                                        class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-3 py-1 md:px-5 md:py-2.5 me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900"
+                                        type="submit">Delete</button>
+                                </form>
+
                             </td>
                         </tr>
                     @endforeach
