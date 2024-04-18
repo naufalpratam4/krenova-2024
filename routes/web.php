@@ -3,13 +3,13 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AdminDataProdukController;
 use App\Http\Controllers\Auth\AuthController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('User.landingPage');
-});
 
 // user
+Route::get('/', [UserController::class, 'index'])->name('user');
+Route::get('/produk/{id}', [UserController::class, 'produkDetail'])->name('user.produkDetail');
 Route::get('/login', function () {
     return view('User.loginUser');
 });

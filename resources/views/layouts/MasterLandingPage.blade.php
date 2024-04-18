@@ -12,6 +12,10 @@
 </head>
 
 <body>
+    @include('template.user.NavBar')
+    <section class="content  mt-24">
+        @yield('content')
+    </section>
 
 </body>
 
