@@ -2,15 +2,26 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+use App\Models\User;
 use GuzzleHttp\Client;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
-    public function login()
+    public function viewLogin()
     {
-        return view('');
+        return view('User.loginUser');
+    }
+    public function login(Request $request)
+    {
+        $credetials = ['email' => $request->email, 'password' => $request->password];
+        if (Auth::attempt($credetials)) {
+            return redirect('/')->with('success', 'login success');
+        }
+        return redirect('/login')->with('error', 'Email atau sandi salah');
     }
     public function viewRegister(Request $request)
     {
@@ -26,5 +37,20 @@ class AuthController extends Controller
         } else {
             return view('User.regiterUser', compact('provinces', 'cities'));
         }
+    }
+
+    public function register(Request $request)
+    {
+        $user = new User();
+        $user->nama_lengkap = $request->nama_lengkap;
+        $user->email = $request->email;
+        $user->provinsi = $request->provinsi;
+        $user->kota = $request->kota;
+        $user->kecamatan = $request->kecamatan;
+        $user->kode_pos = $request->kode_pos;
+        $user->no_hp = $request->no_hp;
+        $user->password = Hash::make($request->password);
+        $user->save();
+        return back()->with("success", "Register Successfuly");
     }
 }

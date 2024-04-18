@@ -10,10 +10,10 @@ use Illuminate\Support\Facades\Route;
 // user
 Route::get('/', [UserController::class, 'index'])->name('user');
 Route::get('/produk/{id}', [UserController::class, 'produkDetail'])->name('user.produkDetail');
-Route::get('/login', function () {
-    return view('User.loginUser');
-});
-Route::get('/register', [AuthController::class, 'viewRegister']);
+Route::get('/login', [AuthController::class, 'viewLogin'])->name('view.login');
+Route::post('/login', [AuthController::class, 'login'])->name('auth.login');
+Route::get('/register', [AuthController::class, 'viewRegister'])->name('view.register');
+Route::post('/register', [AuthController::class, 'register'])->name('auth.register');
 
 // admin
 Route::get('/admin-dashboard', [AdminController::class, 'DashboardAdmin']);

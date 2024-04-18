@@ -1,25 +1,42 @@
 @extends('layouts.MasterLandingPage')
 @include('template.user.NavBar')
 <div class="mt-20">
-    <form class="max-w-sm mx-auto">
+
+    <form class="max-w-sm mx-auto" action="{{ route('auth.register') }} " method="POST">
+        @if (Session::has('success'))
+            <div class="p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-green-400"
+                role="alert">
+                <span class="font-medium">Success alert!</span> {{ Session::get('success') }}
+            </div>
+        @endif
+        @csrf
         <div class="text-4xl font-bold mb-5">Register</div>
         <div class="mb-5">
             <label for="nama" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nama
                 Lengkap</label>
-            <input type="text" id="nama"
+            <input type="text" id="nama" name="nama_lengkap"
                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 placeholder="Nama Lengkap" required />
         </div>
         <div class="mb-5">
             <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your
                 email</label>
-            <input type="email" id="email"
+            <input type="email" id="email" name="email"
                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                placeholder="name@flowbite.com" required />
+                placeholder="example@gmail.com" required />
         </div>
-        <div>
+
+        {{-- no hp --}}
+        <div class="mb-5">
+            <label for="no_hp" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nomor
+                Handphone</label>
+            <input type="number" id="no_hp" name="no_hp"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                placeholder="Semarang" required />
+        </div>
+        <div class="mb-5">
             <label for="countries" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Provinsi</label>
-            <select id="countries"
+            <select id="countries" name="provinsi"
                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
 
                 <option value="">Pilih Provinsi</option>
@@ -28,18 +45,32 @@
                 @endforeach
             </select>
         </div>
+
         {{-- kota --}}
-        <div>
-            <label for="countries" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Kota</label>
-            <select id="cities"
-                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                <option value="">Pilih Kota</option>
-            </select>
+        <div class="mb-5">
+            <label for="kota" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Kota</label>
+            <input type="text" id="nama" name="kota"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                placeholder="Semarang" required />
+        </div>
+        {{-- Kecamatan --}}
+        <div class="mb-5">
+            <label for="kota" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Kecamatan</label>
+            <input type="text" id="nama" name="kecamatan"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                placeholder="Kecamatan Ngaliyan" required />
+        </div>
+        {{-- Kode pos --}}
+        <div class="mb-5">
+            <label for="kota" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Kode Pos</label>
+            <input type="number" id="nama" name="kode_pos"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                placeholder="Kecamatan Ngaliyan" required />
         </div>
         <div class="mb-5">
             <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your
                 password</label>
-            <input type="password" id="password"
+            <input type="password" id="password" name="password"
                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 required />
         </div>
@@ -70,7 +101,7 @@
                         // Buat permintaan ke API untuk mendapatkan kota berdasarkan ID provinsi
                         fetch(
                                 `https://emsifa.github.io/api-wilayah-indonesia/api/regencies/${provinceId}.json`
-                                )
+                            )
                             .then(response => response.json())
                             .then(cities => {
                                 var citiesSelect = document.getElementById('cities');
