@@ -15,6 +15,8 @@ Route::post('/login', [AuthController::class, 'login'])->name('auth.login');
 Route::get('/register', [AuthController::class, 'viewRegister'])->name('view.register');
 Route::post('/register', [AuthController::class, 'register'])->name('auth.register');
 
+Route::get('/home', [UserController::class, 'home'])->middleware('isLogin');
+Route::get('/logout', [AuthController::class, 'logout'])->name('auth.logout');
 // admin
 Route::get('/admin-dashboard', [AdminController::class, 'DashboardAdmin']);
 Route::get('/admin-product', [AdminDataProdukController::class, 'index'])->name('admin.produk');

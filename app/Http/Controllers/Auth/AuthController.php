@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Http\RedirectResponse;
 
 class AuthController extends Controller
 {
@@ -19,7 +20,7 @@ class AuthController extends Controller
     {
         $credetials = ['email' => $request->email, 'password' => $request->password];
         if (Auth::attempt($credetials)) {
-            return redirect('/')->with('success', 'login success');
+            return redirect('/home')->with('success', 'login success');
         }
         return redirect('/login')->with('error', 'Email atau sandi salah');
     }
@@ -52,5 +53,14 @@ class AuthController extends Controller
         $user->password = Hash::make($request->password);
         $user->save();
         return back()->with("success", "Register Successfuly");
+    }
+
+    public function logout(Request $request): RedirectResponse
+    {
+        // dd($request->session()->all());
+        Auth::logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+        return redirect('/login');
     }
 }
