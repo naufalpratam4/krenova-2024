@@ -65,8 +65,6 @@
                 </div>
             </div>
 
-
-
             <div class="mb-5">
                 <label for="lokasi" class="block mb-2 text-sm font-medium text-gray-900">Lokasi </label>
                 <input type="text" id="lokasi" name="lokasi"
