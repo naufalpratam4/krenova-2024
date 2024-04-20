@@ -20,7 +20,7 @@ class AdminController extends Controller
                 'produk' => $produk
             ]);
         } else {
-            return view('Admin.Dashboard.DashboardAdmin', compact('produk', 'user', 'kategori', 'penjual'));
+            return view('Admin.Dashboard.DashboardAdmin', compact('produk', 'user', 'kategori', 'penjual'))->with('tittle', 'dashboard');
         }
     }
 }

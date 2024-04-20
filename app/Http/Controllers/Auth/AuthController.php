@@ -36,7 +36,7 @@ class AuthController extends Controller
         if ($request->is('api/*') || $request->wantsJson()) {
             return response()->json(['provinces' => $provinces, 'cities' => $cities]);
         } else {
-            return view('User.regiterUser', compact('provinces', 'cities'));
+            return view('User.registerNewUser', compact('provinces', 'cities'));
         }
     }
 

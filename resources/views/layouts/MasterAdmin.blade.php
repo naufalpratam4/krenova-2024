@@ -11,8 +11,9 @@
     <title>Document</title>
 </head>
 
-<body>
+<body class="bg-blue-900">
     <div>
+        <nav> @include('template.navbarAdmin')</nav>
 
         <aside>
             @include('template.sideBarAdmin')
