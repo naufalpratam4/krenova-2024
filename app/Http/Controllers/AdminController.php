@@ -94,4 +94,15 @@ class AdminController extends Controller
         $kategori->delete();
         return redirect('/admin-kategori-produk')->with('success', 'sukses menghapus data');
     }
+
+    public function penjual()
+    {
+        $penjual = User::where('role_id', 2)->get();
+        return view('Admin.DataPenjual.Penjual', compact('penjual'));
+    }
+    public function detailPenjual($id)
+    {
+        $user = User::find($id)->where('role_id', 2)->first();
+        return view('Admin.DataPenjual.DetailPenjual', compact('user'));
+    }
 }

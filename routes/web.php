@@ -37,6 +37,10 @@ Route::get('/admin-editKategori/{id}', [AdminController::class, 'viewEditKategor
 Route::post('/admin-editKategori/{id}', [AdminController::class, 'EditKategori'])->name('admin.editKategoriPost');
 Route::delete('/admin-destroyKategori/{id}', [AdminController::class, 'deleteKategori'])->name('admin.deleteKategori');
 
+// admin-penjual
+Route::get('admin-penjual', [AdminController::class, 'penjual']);
+Route::get('admin-detailPenjual/{id}', [AdminController::class, 'detailpenjual'])->name('admin.detailPenjual');
+Route::get('admin-detailNexPenjual/{id}', [AdminController::class, 'detailNextPenjual'])->name('admin.detailNextPenjual');
 // admin-user
 Route::get('/admin-user', [AdminController::class, 'userAdmin'])->name('admin.user');
 Route::get('/admin/add-user', function () {

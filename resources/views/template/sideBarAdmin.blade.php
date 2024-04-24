@@ -45,8 +45,8 @@
                 </a>
             </li>
             <li>
-                <a href="/admin-dashboard"
-                    class="flex items-center p-2 text-white rounded-lg dark:text-white hover:bg-blue-500 dark:hover:bg-gray-700 group">
+                <a href="/admin-penjual"
+                    class="flex items-center p-2 text-white rounded-lg dark:text-white hover:bg-blue-500 dark:hover:bg-gray-700 group {{ Request::is('admin-penjual', 'admin-detailPenjual/{id}') ? 'bg-blue-500' : '' }}">
                     <img src="{{ asset('assets/icon/penjual.png') }}" alt="">
                     <span class="ms-3">Penjual</span>
                 </a>
