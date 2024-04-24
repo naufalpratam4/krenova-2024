@@ -18,9 +18,18 @@ class AuthController extends Controller
     }
     public function login(Request $request)
     {
-        $credetials = ['email' => $request->email, 'password' => $request->password];
-        if (Auth::attempt($credetials)) {
-            return redirect('/home')->with('success', 'login success');
+        $credentials = $request->only('email', 'password');
+
+        if (Auth::attempt($credentials, $request->has('remember'))) {
+            $user = Auth::user();
+            $role_id = $user->role_id;
+            if ($role_id == 1) {
+                return redirect('/admin-dashboard')->with('success', 'login succes');
+            } else if ($role_id == 2) {
+                return redirect();
+            } else {
+                return redirect('/home')->with('success', 'login success');
+            }
         }
         return redirect('/login')->with('error', 'Email atau sandi salah');
     }
@@ -45,12 +54,13 @@ class AuthController extends Controller
         $user = new User();
         $user->nama_lengkap = $request->nama_lengkap;
         $user->email = $request->email;
-        $user->provinsi = $request->provinsi;
-        $user->kota = $request->kota;
-        $user->kecamatan = $request->kecamatan;
-        $user->kode_pos = $request->kode_pos;
         $user->no_hp = $request->no_hp;
         $user->password = Hash::make($request->password);
+        $user->role_id = 3;
+        // $user->provinsi = $request->provinsi;
+        // $user->kota = $request->kota;
+        // $user->kecamatan = $request->kecamatan;
+        // $user->kode_pos = $request->kode_pos;
         $user->save();
         return back()->with("success", "Register Successfuly");
     }

@@ -16,29 +16,30 @@
         <ul class="space-y-2 font-medium">
             <li class="flex justify-center">
                 <a href="/admin-dashboard"
-                    class="flex items-center p-2 text-white rounded-lg dark:text-white hover:bg-blue-500 dark:hover:bg-gray-700 pb-3 group">
+                    class="flex items-center bg-white   text-white rounded-lg dark:text-white hover:bg-blue-500 dark:hover:bg-gray-700 group">
 
-                    <span class="ms-3 text-xl font-bold">Oceanify</span>
+                    <span class=" py-2 px-20 text-xl font-bold"><img width="500px"
+                            src="{{ asset('assets/icon/logo2.png') }}" alt=""></span>
                 </a>
             </li>
             <li>
-                <a {{ $tittle === 'dashboard' ? 'active' : '' }} href="/admin-dashboard"
-                    class="flex items-center p-2 text-white rounded-lg dark:text-white hover:bg-blue-500 dark:hover:bg-gray-700 group ">
+                <a href="/admin-dashboard"
+                    class="flex items-center p-2 text-white rounded-lg dark:text-white hover:bg-blue-500 dark:hover:bg-gray-700 group {{ Request::is('admin-dashboard') ? 'bg-blue-500' : '' }}">
                     <img src="{{ asset('assets/icon/dashbord.png') }}" alt="">
                     <span class="ms-3">Dashboard</span>
                 </a>
 
             </li>
             <li>
-                <a href="/admin-product"
-                    class="flex items-center p-2 text-white rounded-lg dark:text-white hover:bg-blue-500 dark:hover:bg-gray-700 group">
+                <a href="{{ route('admin.produk') }}"
+                    class="flex items-center p-2 text-white rounded-lg dark:text-white hover:bg-blue-500 dark:hover:bg-gray-700 group {{ Request::is('admin-product', 'admin-addProduk') ? 'bg-blue-500' : '' }}">
                     <img src="{{ asset('assets/icon/produk.png') }}" alt="">
                     <span class="ms-3">Produk</span>
                 </a>
             </li>
             <li>
-                <a href="/admin-dashboard"
-                    class="flex items-center p-2 text-white rounded-lg dark:text-white hover:bg-blue-500 dark:hover:bg-gray-700 group">
+                <a href="/admin-kategori-produk"
+                    class="flex items-center p-2 text-white rounded-lg dark:text-white hover:bg-blue-500 dark:hover:bg-gray-700 group {{ Request::is('admin-kategori-produk', 'admin-addKategori') ? 'bg-blue-500' : '' }}">
                     <img src="{{ asset('assets/icon/kategori.png') }}" alt="">
                     <span class="ms-3">Kategori</span>
                 </a>
@@ -58,13 +59,19 @@
                 </a>
             </li>
             <li>
-                <a href="/admin-dashboard"
-                    class="flex items-center p-2 text-white rounded-lg dark:text-white hover:bg-blue-500 dark:hover:bg-gray-700 group">
+                <a href="{{ route('admin.user') }}"
+                    class="flex items-center p-2 text-white rounded-lg dark:text-white hover:bg-blue-500 dark:hover:bg-gray-700 group {{ Request::is('admin-user', 'admin/add-user') ? 'bg-blue-500' : '' }}">
                     <img src="{{ asset('assets/icon/user.png') }}" alt="">
                     <span class="ms-3">User</span>
                 </a>
             </li>
-
+            <li>
+                <a href="/logout"
+                    class="flex items-center p-2 text-white rounded-lg dark:text-white hover:bg-blue-500 dark:hover:bg-gray-700 group md:mt-80 ">
+                    <img src="{{ asset('assets/icon/user.png') }}" alt="">
+                    <span class="ms-3">Logout</span>
+                </a>
+            </li>
         </ul>
     </div>
 </aside>

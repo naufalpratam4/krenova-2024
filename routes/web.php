@@ -17,11 +17,28 @@ Route::post('/register', [AuthController::class, 'register'])->name('auth.regist
 
 Route::get('/home', [UserController::class, 'home'])->middleware('isLogin');
 Route::get('/logout', [AuthController::class, 'logout'])->name('auth.logout');
+
 // admin
 Route::get('/admin-dashboard', [AdminController::class, 'DashboardAdmin']);
+// admin-produk
 Route::get('/admin-product', [AdminDataProdukController::class, 'index'])->name('admin.produk');
 Route::get('/admin-addProduk', [AdminDataProdukController::class, 'showAddProduk'])->name('admin.showProduk');
 Route::post('/admin-addProduk', [AdminDataProdukController::class, 'addProduk'])->name('admin.addProduk');
 Route::get('/admin-editProduk/{id}', [AdminDataProdukController::class, 'editProduk'])->name('admin.editProduk');
 Route::post('/admin-editProduk/{id}', [AdminDataProdukController::class, 'updateProduk'])->name('admin.updateProduk');
 Route::delete('/admin-destroyProduk/{id}', [AdminDataProdukController::class, 'destroyProduk'])->name('admin.destroyProduk');
+
+
+// admin-kategori
+Route::get('/admin-kategori-produk', [AdminController::class, 'ViewKategori'])->name('admin.kategori');
+Route::get('/admin-addKategori', [AdminController::class, 'ViewAddKategori'])->name('admin.addKategori');
+Route::post('/admin-addKategori', [AdminController::class, 'AddKategori'])->name('admin.addKategoriPost');
+Route::get('/admin-editKategori/{id}', [AdminController::class, 'viewEditKategori'])->name('admin.editKategoriView');
+Route::post('/admin-editKategori/{id}', [AdminController::class, 'EditKategori'])->name('admin.editKategoriPost');
+Route::delete('/admin-destroyKategori/{id}', [AdminController::class, 'deleteKategori'])->name('admin.deleteKategori');
+
+// admin-user
+Route::get('/admin-user', [AdminController::class, 'userAdmin'])->name('admin.user');
+Route::get('/admin/add-user', function () {
+    return view('Admin.DataUser.AddUser');
+});

@@ -1,16 +1,22 @@
 @extends('layouts.MasterUser')
 @section('content')
     <div class="mb-4">
-        <div class="text-4xl font-bold pt-8 pb-5">Data Ikan</div>
+        <div class="text-4xl font-bold pt-8 pb-5">Kategori</div>
+        @if (session('success'))
+            <div class="p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-green-400"
+                role="alert">
+                <span class="font-medium">Success! </span>{{ session('success') }}
+            </div>
+        @endif
 
         <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
             <div class="flex flex-column sm:flex-row flex-wrap space-y-4 sm:space-y-0 items-center justify-between pb-4">
                 <div>
-                    <a href="{{ route('admin.addProduk') }}">
+                    <a href="{{ route('admin.addKategori') }}">
                         <button
                             class="inline-flex items-center text-gray-500 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100   focus:ring-gray-100 font-medium rounded-lg text-sm px-3 py-1.5 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
                             type="button">
-                            Tambah Produk
+                            Tambah Kategori
                         </button>
                     </a>
 
@@ -37,73 +43,37 @@
                         <th scope="col" class="p-4">
                             No
                         </th>
-                        <th scope="col" class="px-1 py-3">
-                            Product name
-                        </th>
-                        <th scope="col" class="px-6 py-3">
-                            Kode
-                        </th>
-                        <th scope="col" class="px-1 pe-6 py-3">
-                            Harga
-                        </th>
                         <th scope="col" class="px-3 py-3">
-                            Stok
-                        </th>
-                        <th scope="col" class="px-3 py-3">
-                            Lokasi
-                        </th>
-                        <th scope="col" class="px-3 py-3">
-                            Kategori
+                            Nama Kategori
                         </th>
                         <th scope="col" class="px-3 py-3">
                             Deskripsi
                         </th>
                         <th scope="col" class="px-6 py-3">
-                            Gambar
-                        </th>
-                        <th scope="col" class="px-6 py-3">
                             Aksi
                         </th>
+
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($produk as $no => $item)
+                    @foreach ($kategori as $no => $item)
                         <tr
                             class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                             <th class="w-4 p-4 font-medium text-gray-900 whitespace-nowrap dark:text-white" scope="row">
-                                {{ $no++ }}
+                                {{ $no + 1 }}
                             </th>
-                            <th scope="row"
-                                class="px-1 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                {{ $item->nama_produk }}
-                            </th>
-                            <td class="px-6 py-4">
-                                {{ $item->kd_produk }}
-                            </td>
-                            <td class="px-1 py-4">
-                                Rp. {{ $item->harga }}
-                            </td>
                             <td class="px-3 py-4">
-                                {{ $item->stok }}
-                            </td>
-                            <td class="px-3 py-4">
-                                {{ $item->lokasi }}
-                            </td>
-                            <td class="px-3 py-4">
-                                {{ $item->namaKategori->nama_kategori }}
+                                {{ $item->nama_kategori }}
                             </td>
                             <td class="px-3 py-4 " style="max-width: 200px">
                                 <div class="truncate ...">{{ $item->deskripsi }}</div>
                             </td>
-                            <td class="px-1 py-4 " style="max-width: 200px">
-                                <div><img src="{{ asset('gambar/' . $item->gambar) }}" alt="">
-                                </div>
-                            </td>
+
                             <td class="px-6 py-4 flex">
-                                <a href="{{ route('admin.editProduk', $item->id) }}"
+                                <a href="{{ route('admin.editKategoriView', $item->id) }}"
                                     class="focus:outline-none text-white bg-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:ring-yellow-300 font-medium rounded-lg text-sm px-3 py-1 md:px-5 md:py-2.5 me-2 mb-2 dark:focus:ring-yellow-900"
                                     type="button">Edit</a>
-                                <form action="{{ route('admin.destroyProduk', $item->id) }}" method="POST" type="button"
+                                <form action="{{ route('admin.deleteKategori', $item->id) }}" method="POST" type="button"
                                     onsubmit="return confirm('Delete?')">
                                     @csrf
                                     @method('DELETE')
@@ -119,5 +89,4 @@
             </table>
         </div>
     </div>
-    @include('layouts.PaginateUser')
 @endsection

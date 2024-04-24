@@ -14,7 +14,7 @@
                         Belanja</span></a>
             </div>
             <div class="text-medium pt-2 ms-1 md:pt-0 hover:text-blue-700">
-                <a href="{{ }}"><i class="fa-solid fa-arrow-right-from-bracket"></i><span
+                <a href="{{ route('auth.logout') }}"><i class="fa-solid fa-arrow-right-from-bracket"></i><span
                         class="hidden md:inline">
                         Log out</span></a>
             </div>

@@ -1,5 +1,6 @@
 @extends('layouts.MasterLandingPage')
-<div class="text-slate-500   flex justify-end p-16">Sudah memiliki akun? <a href="/login" class="text-blue-800">Masuk</a>
+<div class="text-slate-500   flex justify-end p-16">Sudah memiliki akun? <a href="/login"
+        class="text-blue-800 ms-1">Masuk</a>
 </div>
 <div class="grid md:grid-cols-2 gap-4 container   mx-auto  ">
     <div class="w-11/12 order-1">
@@ -22,94 +23,55 @@
             <div class="font-semibold text-slate-500 mb-5">Daftar sekarang dan terima update tentang produk dan promosi
                 kami.
             </div>
-            {{-- <div class="mb-5 mt-10">
-                <label for="nama" class="block mb-2 text-sm font-medium text-blue-800 dark:text-white">Nama
-                    Lengkap</label>
-                <input type="text" id="nama" name="nama_lengkap"
-                    class="bg-gray-50 border border-blue-800 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                    placeholder="Nama Lengkap" required />
-            </div> --}}
+
             <div class="mb-5">
                 <label for="email" class="block mb-2 text-sm font-medium text-blue-800  dark:text-white">Your
                     email</label>
                 <input type="email" id="email" name="email"
                     class="bg-gray-50 border border-blue-800 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                    placeholder="example@gmail.com" required />
-            </div>
-
-            <div class="mb-3 grid gap-2 grid-cols-2">
-                <div>
-                    <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Kata
-                        Sandi</label>
-                    <input type="password" id="password" name="password"
-                        class="bg-gray-50 border border-blue-800 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                        required />
-                </div>
-                <div>
-                    <label for="password"
-                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Konfirmasi Kata
-                        Sandi</label>
-                    <input type="password" id="password" name="password"
-                        class="bg-gray-50 border border-blue-800 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                        required />
-                </div>
-
+                    placeholder="Masukkan email Anda" required />
             </div>
 
             {{-- no hp --}}
             <div class="mb-5 grid grid-cols-2 gap-2">
                 <div>
                     <label for="no_hp"
-                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nama</label>
-                    <input type="number" id="no_hp" name="no_hp"
+                        class="block mb-2 text-sm font-medium text-blue-800 dark:text-white">Nama</label>
+                    <input type="text" id="nama" name="nama_lengkap"
                         class="bg-gray-50 border border-blue-800 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                        placeholder="Masukkan Nama" required />
+                        placeholder="Masukkan nama Anda" required />
                 </div>
                 <div>
-                    <label for="no_hp" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Nomor
+                    <label for="no_hp" class="block mb-2 text-sm font-medium text-blue-800 dark:text-white">Nomor
                         Handphone</label>
                     <input type="number" id="no_hp" name="no_hp"
                         class="bg-gray-50 border border-blue-800 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                        placeholder="08***" required />
+                        placeholder="08xxxxxxxxx" required />
+                </div>
+            </div>
+
+            {{-- kata sandi --}}
+            <div class="mb-3 grid gap-2 grid-cols-2">
+                <div>
+                    <label for="password" class="block mb-2 text-sm font-medium text-blue-800 dark:text-white">Kata
+                        Sandi</label>
+                    <input type="password" id="password" name="password"
+                        class="bg-gray-50 border border-blue-800 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                        placeholder="Masukkan kata sandi Anda" required />
+                </div>
+                <div>
+                    <label for="password"
+                        class="block mb-2 text-sm font-medium text-blue-800 dark:text-white">Konfirmasi Kata
+                        Sandi</label>
+                    <input type="password" id="password" name="password"
+                        class="bg-gray-50 border border-blue-800 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                        placeholder="Konfirmasi kata sandi Anda" required />
                 </div>
 
             </div>
-            <div class="mb-5">
-                <label for="countries"
-                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Provinsi</label>
-                <select id="countries" name="provinsi"
-                    class="bg-gray-50 border border-blue-800 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
 
-                    <option value="">Pilih Provinsi</option>
-                    @foreach ($provinces as $item)
-                        <option>{{ $item->name }}</option>
-                    @endforeach
-                </select>
-            </div>
 
-            {{-- kota --}}
-            <div class="mb-5">
-                <label for="kota" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Kota</label>
-                <input type="text" id="nama" name="kota"
-                    class="bg-gray-50 border border-blue-800 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                    placeholder="Semarang" required />
-            </div>
-            {{-- Kecamatan --}}
-            <div class="mb-5">
-                <label for="kota"
-                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Kecamatan</label>
-                <input type="text" id="nama" name="kecamatan"
-                    class="bg-gray-50 border border-blue-800 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                    placeholder="Kecamatan Ngaliyan" required />
-            </div>
-            {{-- Kode pos --}}
-            <div class="mb-5">
-                <label for="kota" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Kode
-                    Pos</label>
-                <input type="number" id="nama" name="kode_pos"
-                    class="bg-gray-50 border border-blue-800 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                    placeholder="Kecamatan Ngaliyan" required />
-            </div>
+
 
 
             <div class="flex items-start mb-5">

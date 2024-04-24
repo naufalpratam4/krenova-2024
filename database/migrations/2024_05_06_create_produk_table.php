@@ -24,7 +24,7 @@ return new class extends Migration
             $table->unsignedBigInteger('kategori_id');
             $table->unsignedBigInteger('penjual_id');
 
-            $table->foreign('kategori_id')->references('id')->on('kategori');
+            $table->foreign('kategori_id')->references('id')->on('kategori')->onDelete('CASCADE');
             $table->foreign('penjual_id')->references('id')->on('users')->where('role_id', 1);
             $table->timestamps();
         });

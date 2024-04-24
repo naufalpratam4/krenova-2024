@@ -18,10 +18,10 @@ return new class extends Migration
             $table->string('username')->unique()->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->string('provinsi');
-            $table->string('kota');
-            $table->string('kecamatan');
-            $table->string('kode_pos');
+            $table->string('provinsi')->nullable();
+            $table->string('kota')->nullable();
+            $table->string('kecamatan')->nullable();
+            $table->string('kode_pos')->nullable();
             $table->string('no_hp');
             $table->string('gambar_profil')->nullable();
             $table->unsignedBigInteger('role_id')->nullable();

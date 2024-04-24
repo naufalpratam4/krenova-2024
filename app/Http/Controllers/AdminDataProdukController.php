@@ -111,27 +111,30 @@ class AdminDataProdukController extends Controller
 
         $data = Produk::find($id); // Assuming you are retrieving the model by its ID
         if ($request->hasFile('gambar')) {
-            $files = $request->file('gambar');
-
-            foreach ($files as $file) {
-                $filename = $file->getClientOriginalName();
-                $file->move(public_path('gambar/'), $filename);
-                // Assuming you want to save the filename to the database column 'gambar'
-                $data->gambar = $filename;
-            }
+            $request->file('gambar')->move('gambar/', $request->file('gambar')->getClientOriginalName());
+            $data->gambar = $request->file('gambar')->getClientOriginalName();
+            $data->save();
         }
 
         // Save any other attributes from the request
         // For example:
-        $data->attribute1 = $request->input('attribute1');
-        $data->attribute2 = $request->input('attribute2');
+        $data->nama_produk = $request->input('nama_produk');
+        $data->kd_produk = $request->input('kd_produk');
+        $data->harga = $request->input('harga');
+        $data->stok = $request->input('stok');
+        $data->lokasi = $request->input('lokasi');
+        $data->ukuran = $request->input('ukuran');
+        $data->gambar = $request->input('gambar');
+        $data->deskripsi = $request->input('deskripsi');
+        $data->kategori_id = $request->input('kategori_id');
+        $data->penjual_id = $request->input('penjual_id');
         // Add any other attributes as needed
 
         $data->save();
 
 
 
-        return redirect()->route('admin.editProduk', $produk->id)->with('success', 'Produk berhasil diperbarui');
+        return redirect()->route('admin.editProduk', $data->id)->with('success', 'Produk berhasil diperbarui');
     }
 
     public function destroyProduk($id)

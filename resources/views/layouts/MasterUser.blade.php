@@ -11,7 +11,7 @@
     <title>Document</title>
 </head>
 
-<body>
+<body class="bg-gray-100">
     <div>
 
         <aside>

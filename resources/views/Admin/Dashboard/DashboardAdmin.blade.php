@@ -1,4 +1,4 @@
-@extends('layouts.MasterAdmin')
+@extends('layouts.MasterUser')
 
 @section('content')
 @endsection
